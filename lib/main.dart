@@ -1,3 +1,4 @@
+import 'package:around_me_app/theme/dark.dart';
 import 'package:around_me_app/theme/light.dart';
 import 'package:around_me_app/ui/pages/home/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(theme: lightTheme, home: HomeScreen());
+    return MaterialApp(
+      themeMode: ThemeMode.system,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      home: HomeScreen(),
+    );
   }
 }
