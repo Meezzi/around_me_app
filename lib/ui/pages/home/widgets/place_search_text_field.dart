@@ -21,4 +21,10 @@ class _PlaceSearchTextFieldState extends State<PlaceSearchTextField> {
   }
 
   final _placeController = TextEditingController();
+
+  @override
+  void dispose() {
+    _placeController.dispose();
+    super.dispose();
+  }
 }
