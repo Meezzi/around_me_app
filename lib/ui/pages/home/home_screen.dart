@@ -6,6 +6,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: PlaceSearchTextField()));
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(appBar: AppBar(title: PlaceSearchTextField())),
+    );
   }
 }
