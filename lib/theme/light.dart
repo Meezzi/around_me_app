@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 final ThemeData lightTheme = ThemeData(
+  brightness: Brightness.light,
   inputDecorationTheme: InputDecorationTheme(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
@@ -15,4 +16,8 @@ final ThemeData lightTheme = ThemeData(
       borderSide: BorderSide(color: Colors.grey[700]!, width: 1.5),
     ),
   ),
+
+  cardTheme: CardTheme(
+    color: Colors.white,
+  )
 );
