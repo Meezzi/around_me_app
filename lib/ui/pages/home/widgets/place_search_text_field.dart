@@ -15,7 +15,10 @@ class _PlaceSearchTextFieldState extends State<PlaceSearchTextField> {
       onSubmitted: (value) {
         // TODO : 검색
       },
+      controller: _placeController,
       decoration: InputDecoration(hintText: '검색어를 입력하세요'),
     );
   }
+
+  final _placeController = TextEditingController();
 }
