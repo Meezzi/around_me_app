@@ -1,4 +1,5 @@
 import 'package:around_me_app/theme/light.dart';
+import 'package:around_me_app/ui/pages/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,6 +11,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(theme: lightTheme);
+    return MaterialApp(theme: lightTheme, home: HomeScreen());
   }
 }
