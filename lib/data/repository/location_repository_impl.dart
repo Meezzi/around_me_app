@@ -18,6 +18,18 @@ class LocationRepositoryImpl implements Repository {
       ),
     );
 
+    if (response.statusCode == 200) {
+      final items = response.data['items'] as List;
+
+      return items.map((item) {
+        return Place(
+          title: item['title'],
+          category: item['category'],
+          roadAddress: item['roadAddress'],
+        );
+      }).toList();
+    }
+
     return [];
   }
 }
