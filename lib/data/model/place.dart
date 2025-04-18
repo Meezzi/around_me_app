@@ -13,4 +13,12 @@ class Place {
     : title = json['title'],
       category = json['category'],
       roadAddress = json['roadAddress'];
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'category': category,
+      'roadAddress': roadAddress,
+    };
+  }
 }
