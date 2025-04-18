@@ -8,4 +8,9 @@ class Place {
     required this.category,
     required this.roadAddress,
   });
+
+  Place.fromJson(Map<String, dynamic> json)
+    : title = json['title'],
+      category = json['category'],
+      roadAddress = json['roadAddress'];
 }
