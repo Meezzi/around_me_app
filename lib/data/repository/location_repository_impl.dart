@@ -2,7 +2,6 @@ import 'package:around_me_app/core/result/result.dart';
 import 'package:around_me_app/data/model/place.dart';
 import 'package:around_me_app/data/repository/location_repository.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class LocationRepositoryImpl implements LocationRepository {
   final Dio dio;
@@ -22,8 +21,8 @@ class LocationRepositoryImpl implements LocationRepository {
       queryParameters: {'query': query, 'displasy': 5},
       options: Options(
         headers: {
-          'X-Naver-Client-Id': dotenv.env['NAVER_CLIENT_ID'],
-          'X-Naver-Client-Secret': dotenv.env['NAVER_CLIENT_SECRET'],
+          'X-Naver-Client-Id': naverClientId,
+          'X-Naver-Client-Secret': naverClientSecret,
         },
       ),
     );
@@ -32,12 +31,12 @@ class LocationRepositoryImpl implements LocationRepository {
       final items = response.data['items'] as List;
 
       return items.map((item) {
-        return Place(
+            return Place(
           title: item['title'],
           category: item['category'],
           roadAddress: item['roadAddress'],
-        );
-      }).toList();
+            );
+          }).toList();
     }
 
     return [];
