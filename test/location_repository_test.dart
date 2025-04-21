@@ -10,6 +10,22 @@ void main() {
     // given : 준비 단계 - 테스트를 위해 준비하는 과정
     // Dio를 상속받은 MockDio 객체를 생성 (HTTP 호출을 가짜로 처리)
     final mockDio = MockDio();
+
+    // mockDio.get()이 호출되면 실제로 dummyData를 담은 응답을 반환하도록 설정
+    // 실제 서버에 요청을 보내지 않고 테스트에 필요한 dummyData를 반환
+    when(() {
+      return mockDio.get(
+        any(),
+        queryParameters: any(named: 'queryParameters'),
+        options: any(named: 'options'),
+      );
+    }).thenAnswer((invocation) async {
+      return Response<Map<String, dynamic>>(
+        requestOptions: RequestOptions(),
+        statusCode: 200,
+        data: dummyData,
+      );
+    });
   });
 }
 
@@ -17,3 +33,24 @@ void main() {
 // Dio를 흉내내는 가짜 객체 생성용 클래스
 // Mock 클래스를 상속받아 Dio 타입처럼 동작할 것이라고 선언
 class MockDio extends Mock implements Dio {}
+
+// Naver Search API에서 받는다는 것을 가정한 가짜 응답 데이터
+final dummyData = {
+  "lastBuildDate": "Mon, 21 Apr 2025 10:59:09 +0900",
+  "total": 1,
+  "start": 1,
+  "display": 1,
+  "items": [
+    {
+      "title": "부일숯불갈비",
+      "link": "",
+      "category": "한식>육류,고기요리",
+      "description": "",
+      "telephone": "",
+      "address": "서울특별시 영등포구 영등포동3가 23-11",
+      "roadAddress": "서울특별시 영등포구 영중로6길 23-8",
+      "mapx": "1269086523",
+      "mapy": "375181466",
+    },
+  ],
+};
