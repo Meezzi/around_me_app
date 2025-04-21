@@ -4,7 +4,16 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class LocationRepositoryImpl implements LocationRepository {
-  final dio = Dio();
+  final Dio dio;
+  final String naverClientId;
+  final String naverClientSecret;
+
+  LocationRepositoryImpl({
+    required this.dio,
+    required this.naverClientId,
+    required this.naverClientSecret,
+  });
+
   @override
   Future<List<Place>> searchPlace(String query) async {
     final response = await dio.get(
