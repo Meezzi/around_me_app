@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PlaceSearchTextField extends StatefulWidget {
+class PlaceSearchTextField extends ConsumerStatefulWidget {
   const PlaceSearchTextField({super.key});
 
   @override
-  State<PlaceSearchTextField> createState() =>
+  ConsumerState<PlaceSearchTextField> createState() =>
       _PlaceSearchTextFieldState();
 }
 
-class _PlaceSearchTextFieldState extends State<PlaceSearchTextField> {
+class _PlaceSearchTextFieldState extends ConsumerState<PlaceSearchTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
