@@ -1,19 +1,21 @@
+import 'package:around_me_app/ui/pages/home/home_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PlaceSearchTextField extends StatefulWidget {
+class PlaceSearchTextField extends ConsumerStatefulWidget {
   const PlaceSearchTextField({super.key});
 
   @override
-  State<PlaceSearchTextField> createState() =>
+  ConsumerState<PlaceSearchTextField> createState() =>
       _PlaceSearchTextFieldState();
 }
 
-class _PlaceSearchTextFieldState extends State<PlaceSearchTextField> {
+class _PlaceSearchTextFieldState extends ConsumerState<PlaceSearchTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
       onSubmitted: (value) {
-        // TODO : 검색
+        _onSubmitted(value);
       },
       controller: _placeController,
       decoration: InputDecoration(hintText: '검색어를 입력하세요'),
@@ -26,5 +28,9 @@ class _PlaceSearchTextFieldState extends State<PlaceSearchTextField> {
   void dispose() {
     _placeController.dispose();
     super.dispose();
+  }
+
+  void _onSubmitted(String query) {
+    ref.read(homeViewModelProvider.notifier).searchPlace(query);
   }
 }

@@ -1,7 +1,9 @@
+import 'package:around_me_app/data/model/place.dart';
 import 'package:flutter/material.dart';
 
 class PlaceInfoCard extends StatelessWidget {
-  const PlaceInfoCard({super.key});
+  final Place place;
+  const PlaceInfoCard({super.key, required this.place});
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +13,9 @@ class PlaceInfoCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _placeHeader('삼성 1동 주민센터'),
-            Text('공공, 사회기관 > 행정 복지센터'),
-            Text('서울특별시 강남구 봉은사로 616 삼성1동 주민센터'),
+            _placeHeader(place.title),
+            Text(place.category),
+            Text(place.roadAddress),
           ],
         ),
       ),
