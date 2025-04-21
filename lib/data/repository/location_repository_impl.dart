@@ -15,8 +15,11 @@ class LocationRepositoryImpl implements LocationRepository {
     required this.naverClientSecret,
   });
 
+  /// 장소 검색 후, 응답 데이터 가져오기
   @override
   Future<Result<List<Place>>> searchPlace(String query) async {
+    // try - catch 문은 인터넷 관련 예외 처리
+    // Result 클래스는 실패를 throw로 던지지 않고 안전하게 처리
     try {
       final response = await dio.get(
         'https://openapi.naver.com/v1/search/local.json',
