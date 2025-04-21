@@ -18,7 +18,7 @@ class LocationRepositoryImpl implements LocationRepository {
   Future<Result<List<Place>>> searchPlace(String query) async {
     final response = await dio.get(
       'https://openapi.naver.com/v1/search/local.json',
-      queryParameters: {'query': query, 'displasy': 5},
+      queryParameters: {'query': query, 'display': 5},
       options: Options(
         headers: {
           'X-Naver-Client-Id': naverClientId,
