@@ -1,9 +1,9 @@
 import 'package:around_me_app/data/model/place.dart';
-import 'package:around_me_app/data/repository/repository.dart';
+import 'package:around_me_app/data/repository/location_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-class LocationRepositoryImpl implements Repository {
+class LocationRepositoryImpl implements LocationRepository {
   final dio = Dio();
   @override
   Future<List<Place>> searchPlace(String query) async {
