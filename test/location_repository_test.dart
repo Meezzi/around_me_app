@@ -26,6 +26,20 @@ void main() {
         data: dummyData,
       );
     });
+
+    // 테스트 대상인 LocationRepositoryImpl 생성
+    // Repository가 아닌 구현체 LocationRepositoryImpl을 생성하는 이유는 Impl의 동작을 검증하기 때문
+    // mockDio를 주입하기 때문에 실제 네트워크 요청이 발생하지 않음
+    final locationRepository = LocationRepositoryImpl(
+      dio: mockDio,
+      naverClientId: '',
+      naverClientSecret: '',
+    );
+
+    // when : 실행 단계 - 실제로 테스트를 실행하는 과정
+    // 테스트 대상 함수 실행
+    // searchPlace()가 호출되면서 내부적으로 mockDio.get()을 호출하고 dummyData를 받게 됨
+    final result = await locationRepository.searchPlace('카페');
   });
 }
 
