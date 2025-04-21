@@ -33,7 +33,8 @@ class LocationRepositoryImpl implements LocationRepository {
       );
 
       if (response.statusCode == 200) {
-        final List<Map<String, dynamic>> items = response.data['items'];
+        final items = response.data['items'] as List<dynamic>;
+
         List<Place> itemList = items.map((e) => Place.fromJson(e)).toList();
 
         return Result.ok(itemList);
