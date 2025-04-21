@@ -1,3 +1,4 @@
+import 'package:around_me_app/core/result/result.dart';
 import 'package:around_me_app/data/model/place.dart';
 import 'package:around_me_app/data/repository/location_repository.dart';
 import 'package:dio/dio.dart';
@@ -15,7 +16,7 @@ class LocationRepositoryImpl implements LocationRepository {
   });
 
   @override
-  Future<List<Place>> searchPlace(String query) async {
+  Future<Result<List<Place>>> searchPlace(String query) async {
     final response = await dio.get(
       'https://openapi.naver.com/v1/search/local.json',
       queryParameters: {'query': query, 'displasy': 5},
