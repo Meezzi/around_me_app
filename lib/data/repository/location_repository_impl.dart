@@ -1,3 +1,4 @@
+import 'package:around_me_app/core/error/custom_exception.dart';
 import 'package:around_me_app/core/result/result.dart';
 import 'package:around_me_app/data/model/place.dart';
 import 'package:around_me_app/data/repository/location_repository.dart';
@@ -41,6 +42,11 @@ class LocationRepositoryImpl implements LocationRepository {
       return Result.ok(itemList);
     }
 
-    return [];
+    return Result.error(
+      CustomException(
+        errorCode: response.statusCode!,
+        errorMessage: response.statusMessage!,
+      ),
+    );
   }
 }
