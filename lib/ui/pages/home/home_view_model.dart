@@ -1,6 +1,9 @@
 import 'package:around_me_app/core/result/result.dart';
 import 'package:around_me_app/data/model/place.dart';
 import 'package:around_me_app/data/repository/location_repository.dart';
+import 'package:around_me_app/data/repository/location_repository_impl.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:riverpod/riverpod.dart';
 
 class HomeViewModel extends Notifier<List<Place>> {
@@ -27,3 +30,14 @@ class HomeViewModel extends Notifier<List<Place>> {
     }
   }
 }
+
+/// HomeViewModel 관리자
+final homeViewModelProvider = NotifierProvider<HomeViewModel, List<Place>>(() {
+  final locationRepository = LocationRepositoryImpl(
+    dio: Dio(),
+    naverClientId: dotenv.env['NAVER_CLIENT_ID']!,
+    naverClientSecret: dotenv.env['NAVER_CLIENT_SECRET']!,
+  );
+
+  return HomeViewModel(locationRepository);
+});
