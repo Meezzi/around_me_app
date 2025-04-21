@@ -28,15 +28,17 @@ class LocationRepositoryImpl implements LocationRepository {
     );
 
     if (response.statusCode == 200) {
-      final items = response.data['items'] as List;
-
-      return items.map((item) {
+      final List<Map<String, dynamic>> items = response.data['items'];
+      List<Place> itemList =
+          items.map((e) {
             return Place(
-          title: item['title'],
-          category: item['category'],
-          roadAddress: item['roadAddress'],
+              title: e['title'],
+              category: e['category'],
+              roadAddress: e['roadAddress'],
             );
           }).toList();
+
+      return Result.ok(itemList);
     }
 
     return [];
