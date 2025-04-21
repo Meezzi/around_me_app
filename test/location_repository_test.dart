@@ -40,6 +40,10 @@ void main() {
     // 테스트 대상 함수 실행
     // searchPlace()가 호출되면서 내부적으로 mockDio.get()을 호출하고 dummyData를 받게 됨
     final result = await locationRepository.searchPlace('카페');
+
+    // then : 검증 단계 - 테스트를 검증하는 과정
+    // searchPlace의 반환값이 Result.ok()로 래핑된 List<Place>인지 확인
+    expect(result.runtimeType, Ok<List<Place>>);
   });
 }
 
