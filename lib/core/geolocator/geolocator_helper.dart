@@ -15,5 +15,10 @@ class GeolocatorHelper {
         return Future.error('위치 권한을 허용해주세요 :)');
       }
     }
+
+    // Geolocator로 위치 가져와서 리턴
+    return await Geolocator.getCurrentPosition(
+      locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
+    );
   }
 }
