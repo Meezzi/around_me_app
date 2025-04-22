@@ -1,4 +1,5 @@
 import 'package:around_me_app/data/model/place.dart';
+import 'package:around_me_app/ui/detail/detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class PlaceInfoCard extends StatelessWidget {
@@ -7,16 +8,24 @@ class PlaceInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card.outlined(
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _placeHeader(place.title),
-            Text(place.category),
-            Text(place.roadAddress),
-          ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => DetailScreen(place.link)),
+        );
+      },
+      child: Card.outlined(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _placeHeader(place.title),
+              Text(place.category),
+              Text(place.roadAddress),
+            ],
+          ),
         ),
       ),
     );
