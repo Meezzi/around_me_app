@@ -62,5 +62,6 @@ lib/
 
 ## ✨ 트러블 슈팅
 [API 키 숨기기](https://sfida.tistory.com/129)
+[회고](https://sfida.tistory.com/127)
 
 <br>
