@@ -34,6 +34,7 @@ void main() {
       dio: mockDio,
       naverClientId: '',
       naverClientSecret: '',
+      vworldKey: '',
     );
 
     // when : 실행 단계 - 실제로 테스트를 실행하는 과정
